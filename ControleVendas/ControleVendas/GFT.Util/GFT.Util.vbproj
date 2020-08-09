@@ -88,11 +88,15 @@
     <Compile Include="Classes\SuperDataTable.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\SuperXLS.vb" />
     <Compile Include="Classes\Zip.vb" />
-    <Compile Include="Controles\SuperGroupBox.vb">
+    <Compile Include="Controles\SuperDataGrid.Designer.vb">
+      <DependentUpon>SuperDataGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SuperDataGrid.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controles\SuperNavegador.vb">
+    <Compile Include="Controles\SuperGroupBox.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controles\gLabel\DropdownColorBlender.designer.vb">
@@ -161,6 +165,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controles\gLabel\DropdownColorBlender.resx">
       <DependentUpon>DropdownColorBlender.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\SuperDataGrid.resx">
+      <DependentUpon>SuperDataGrid.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\SuperLetreiro.resx">
       <DependentUpon>SuperLetreiro.vb</DependentUpon>
@@ -238,23 +245,11 @@
     <None Include="Imagens\m_like_icon.gif" />
     <None Include="Imagens\m_dislike_icon.gif" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EPPlus\EPPlus.csproj">
       <Project>{7b288026-5502-4a39-bf41-77e086f3e4a3}</Project>
       <Name>EPPlus</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="MSHTML">
-      <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
-      <VersionMajor>4</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

@@ -27,7 +27,7 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub txtCaption_TextChanged(sender As Object, e As EventArgs) Handles txtCaption.TextChanged
-        If txtCaption.Text <> "Home" Then
+        If txtCaption.Text <> "Dashboard" Then
             gbPrincipal.Visible = False
         Else
             gbPrincipal.Visible = True

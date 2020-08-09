@@ -26,7 +26,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ControleVendas.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,7 +38,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>ControleVendas.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -45,7 +49,7 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionStrict>Off</OptionStrict>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
@@ -175,6 +179,10 @@
   <ItemGroup>
     <Compile Include="Context\BancoContext.vb" />
     <Compile Include="Controller\ProdutoController.vb" />
+    <Compile Include="DAL\pCidade_Estado.vb" />
+    <Compile Include="DAL\pCliente.vb" />
+    <Compile Include="DAL\pProduto.vb" />
+    <Compile Include="DAL\pVenda.vb" />
     <Compile Include="Formulários\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
@@ -218,14 +226,10 @@
     <Compile Include="Formulários\frmVendas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Migrations\202006290359073_inicio.designer.vb">
-      <DependentUpon>202006290359073_inicio.vb</DependentUpon>
+    <Compile Include="Migrations\202008081623521_inicio.designer.vb">
+      <DependentUpon>202008081623521_inicio.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006290359073_inicio.vb" />
-    <Compile Include="Migrations\202006290404446_ajuste estoque.designer.vb">
-      <DependentUpon>202006290404446_ajuste estoque.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006290404446_ajuste estoque.vb" />
+    <Compile Include="Migrations\202008081623521_inicio.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Model\Cliente.vb" />
     <Compile Include="Model\Produto.vb" />
@@ -270,11 +274,8 @@
     <EmbeddedResource Include="Formulários\frmVendas.resx">
       <DependentUpon>frmVendas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006290359073_inicio.resx">
-      <DependentUpon>202006290359073_inicio.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006290404446_ajuste estoque.resx">
-      <DependentUpon>202006290404446_ajuste estoque.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008081623521_inicio.resx">
+      <DependentUpon>202008081623521_inicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -337,6 +338,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconSalvar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconSim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconNao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconUsuario95x75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconUsuar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPendente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconStatusAtrasado%28Alerta%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

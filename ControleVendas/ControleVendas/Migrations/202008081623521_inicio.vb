@@ -11,24 +11,24 @@ Namespace Migrations
                 "dbo.Cliente",
                 Function(c) New With
                     {
-                        .ClienteID = c.Int(nullable := False, identity := True),
-                        .Nome = c.String(maxLength := 100)
+                        .cCliente = c.Int(nullable := False, identity := True),
+                        .rNome = c.String(maxLength := 100)
                     }) _
-                .PrimaryKey(Function(t) t.ClienteID)
+                .PrimaryKey(Function(t) t.cCliente)
             
             CreateTable(
                 "dbo.Produto",
                 Function(c) New With
                     {
-                        .ProdutoID = c.Int(nullable := False, identity := True),
-                        .Nome = c.String(),
-                        .Quantidade = c.Decimal(nullable := False, precision := 18, scale := 2),
-                        .Valor = c.Decimal(nullable := False, precision := 18, scale := 2),
-                        .Custo = c.Decimal(nullable := False, precision := 18, scale := 2),
-                        .EstoqueMin = c.Decimal(nullable := False, precision := 18, scale := 2),
-                        .Cor = c.String()
+                        .cProduto = c.Int(nullable := False, identity := True),
+                        .rNome = c.String(),
+                        .cQuantidade = c.Decimal(nullable := False, precision := 18, scale := 2),
+                        .cValor = c.Decimal(nullable := False, precision := 18, scale := 2),
+                        .cCusto = c.Decimal(nullable := False, precision := 18, scale := 2),
+                        .cEstoqueMin = c.Decimal(precision := 18, scale := 2),
+                        .rCor = c.String()
                     }) _
-                .PrimaryKey(Function(t) t.ProdutoID)
+                .PrimaryKey(Function(t) t.cProduto)
             
             CreateTable(
                 "dbo.Venda",

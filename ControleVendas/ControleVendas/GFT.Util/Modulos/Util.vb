@@ -171,7 +171,7 @@ Public Module Util
 
 
 
-            strCaminhoLog = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "_RPAD_LOG")
+            strCaminhoLog = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "GerenciacimentoFinancas")
 
             If Directory.Exists(strCaminhoLog) = False Then
                 Directory.CreateDirectory(strCaminhoLog)

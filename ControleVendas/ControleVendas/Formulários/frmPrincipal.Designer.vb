@@ -24,9 +24,6 @@ Partial Class frmPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ConfiguraçõesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProdutosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -41,9 +38,6 @@ Partial Class frmPrincipal
         Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.gbPrincipal = New System.Windows.Forms.GroupBox()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.tabCtrlProduto = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
@@ -54,9 +48,6 @@ Partial Class frmPrincipal
         Me.StatusCima.SuspendLayout()
         Me.StatusBaixo.SuspendLayout()
         Me.gbPrincipal.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCtrlProduto.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
@@ -169,9 +160,9 @@ Partial Class frmPrincipal
         Me.txtCaption.Margin = New System.Windows.Forms.Padding(10, 3, 0, 2)
         Me.txtCaption.Name = "txtCaption"
         Me.txtCaption.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtCaption.Size = New System.Drawing.Size(1177, 39)
+        Me.txtCaption.Size = New System.Drawing.Size(1138, 39)
         Me.txtCaption.Spring = True
-        Me.txtCaption.Text = "Home"
+        Me.txtCaption.Text = "Dashboard"
         Me.txtCaption.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
         Me.txtCaption.ToolTipText = "Você esta aqui"
         '
@@ -212,58 +203,12 @@ Partial Class frmPrincipal
         Me.gbPrincipal.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbPrincipal.Controls.Add(Me.TabControl1)
         Me.gbPrincipal.Controls.Add(Me.tabCtrlProduto)
         Me.gbPrincipal.Location = New System.Drawing.Point(0, 122)
         Me.gbPrincipal.Name = "gbPrincipal"
         Me.gbPrincipal.Size = New System.Drawing.Size(1202, 373)
         Me.gbPrincipal.TabIndex = 5
         Me.gbPrincipal.TabStop = False
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.TabControl1.Location = New System.Drawing.Point(520, 44)
-        Me.TabControl1.Multiline = True
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.Padding = New System.Drawing.Point(198, 5)
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(517, 203)
-        Me.TabControl1.TabIndex = 1
-        '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TabPage2.Controls.Add(Me.Chart1)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 38)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(509, 161)
-        Me.TabPage2.TabIndex = 0
-        Me.TabPage2.Text = "Fluxo de Caixa"
-        '
-        'Chart1
-        '
-        Me.Chart1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid
-        Me.Chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(6, 6)
-        Me.Chart1.Name = "Chart1"
-        Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Me.Chart1.PaletteCustomColors = New System.Drawing.Color() {System.Drawing.Color.Fuchsia}
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(497, 152)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
-        Me.Chart1.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal
         '
         'tabCtrlProduto
         '
@@ -346,9 +291,6 @@ Partial Class frmPrincipal
         Me.StatusBaixo.ResumeLayout(False)
         Me.StatusBaixo.PerformLayout()
         Me.gbPrincipal.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCtrlProduto.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -370,11 +312,8 @@ Partial Class frmPrincipal
     Friend WithEvents Timer As Timer
     Friend WithEvents JanelasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents gbPrincipal As GroupBox
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage2 As TabPage
     Friend WithEvents tabCtrlProduto As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox2 As TextBox

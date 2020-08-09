@@ -3,6 +3,7 @@
     Private controller As ProdutoController
     Private Sub frmNovoProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         Cor(Me, Collor.CinzaEscuro)
     End Sub
 
@@ -21,17 +22,17 @@
 
             '  controller.Delete(1)
 
-            prod.Nome = txtProduto.Text
-            prod.Quantidade = Convert.ToDecimal(txtQtde.Text)
-            prod.EstoqueMin = Convert.ToDecimal(txtEstoqueMin.Text)
-            prod.Valor = Convert.ToDecimal(txtValor.Text)
-            prod.Custo = Convert.ToDecimal(txtCusto.Text)
-            prod.Cor = txtCor.Text
+            prod.rNome = txtProduto.Text
+            prod.cQuantidade = Convert.ToDecimal(txtQtde.Text)
+            prod.cEstoqueMin = Convert.ToDecimal(txtEstoqueMin.Text)
+            prod.cValor = Convert.ToDecimal(txtValor.Text)
+            prod.cCusto = Convert.ToDecimal(txtCusto.Text)
+            prod.rCor = txtCor.Text
 
-            controller.Alterar(2, prod)
+            'controller.Alterar(2, prod)
 
             If controller.Incluir(prod) Then
-                MessageBox.Show("SUcesso")
+                MessageBox.Show("Sucesso")
             Else
                 MessageBox.Show("Erro")
             End If

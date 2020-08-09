@@ -7,7 +7,10 @@ Public Class frmProdutos
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tabCtrlProduto)
 
-        Cor(Me, Collor.CinzaEscuro)
+        Cor(Me, Collor.Control)
+
+        Cor(CType(gbBotoes, Control), Collor.CinzaMedio)
+
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnCadastrar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnEditar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -40,9 +43,7 @@ Public Class frmProdutos
     End Sub
 
     Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
-        Dim novo As frmNovoCliente
-        novo = New frmNovoCliente
-        novo.Show()
+
     End Sub
 
     Private Sub txtFiltroProduto_TextChanged(sender As Object, e As EventArgs) Handles txtFiltroProduto.TextChanged

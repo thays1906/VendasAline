@@ -5,13 +5,13 @@ Public Class Produto
 
     <Key()>
     <DatabaseGenerated(DatabaseGeneratedOption.Identity)>
-    Public Property ProdutoID As Integer
+    Public Property cProduto As Integer
 
-    Public Property Nome As String
-    Public Property Quantidade As Decimal
-    Public Property Valor As Decimal
-    Public Property Custo As Decimal
-    Public Property EstoqueMin As Decimal?
-    Public Property Cor As String
+    Public Property rNome As String
+    Public Property cQuantidade As Decimal
+    Public Property cValor As Decimal
+    Public Property cCusto As Decimal
+    Public Property cEstoqueMin As Decimal?
+    Public Property rCor As String
 
 End Class

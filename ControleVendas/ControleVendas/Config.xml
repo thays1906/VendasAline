@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<RPAD>
+	<Descricao valor="Ambiente Bradesco" />
+	<Dominio valor="CORP"/>
+	<Ambiente valor="Bradesco"/>
+
+	<EfetivaSGSS valor="Nao"/>
+	<!--<Servidor valor="DESKTOP-VH369CI\SQLEXPRESS"/>-->
+	<!--mynote-->
+	<!--<Servidor valor="DESKTOP-6K5LRMH\SQLEXPRESS"/> PC-->
+	<Servidor valor="DESKTOP-LMN16D4\SQLEXPRESS"/> NOTE Alan
+	<Usuario valor="sa"/>
+	<!--<Senha valor="tTctvYwv0Bc="/> mYnOTE-->
+	<Senha valor="/06EDmpVT6k="/>
+	<Banco valor="Picarruchas"/>
+
+	<ServidorSGSS valor="MZ-VV-BD-004\MSSQL2005A"/>
+	<UsuarioSGSS valor="gestd000"/>
+	<SenhaSGSS valor="KVHbbydVbWQIvcuNtp3Wkg=="/>
+	<BancoSGSS valor="SGSS"/>
+
+	<UrlSGSS valor="http://mz-vv-ap-012/SGSS" />
+
+	<WebServiceObterSolicitacao valor= "/WS/AlterarSolicitacao.asmx/Obter" />
+	<WebServiceGerarCorreios valor= "/WS/Correios.asmx/GerarCorreio" />
+	<WebServiceObtervConteudoAnexo valor= "/WS/EnvioArquivoGCor.asmx/ObterConteudoAnexo" />
+	<WebServiceAnexarArquivo valor= "/WS/EnvioArquivoGCor.asmx/AnexarArquivoSGSS" />
+	<WebServiceAnexarArquivoGCC valor= "/WS/EnvioArquivoGCC.asmx/AnexarArquivoGCC"/>
+	<WebServiceObterConteudoAnexo valor= "/WS/EnvioArquivoGCor.asmx/ObterConteudoAnexo" />
+	<WebServiceObterConteudoAnexoBase64 valor= "/WS/EnvioArquivoGCor.asmx/ObterConteudoAnexoBase64" />
+	<WebServiceAnexarObterListaAnexos valor= "/WS/EnvioArquivoGCor.asmx/ObterListaAnexos" />
+	<WebServiceAlteraStatusSolicitacao valor= "/WS/AlterarSolicitacao.asmx/AlterarStatus" />
+	<WebServiceAtribuirSolicitacao valor= "/WS/AlterarSolicitacao.asmx/AtribuirSolicitacao" />
+
+	<Obsoleto valor="false" />
+
+</RPAD>

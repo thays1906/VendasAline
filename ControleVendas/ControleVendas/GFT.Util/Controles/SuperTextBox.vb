@@ -193,7 +193,8 @@ Public Class SuperTextBox
         End Try
     End Sub
 
-    Public Function VerificaObrigatorio(Optional ByVal bZerado As Boolean = False) As Boolean
+    Public Function VerificaObrigatorio(Optional ByVal bZerado As Boolean = False,
+                                        Optional ByVal bMsg As Boolean = True) As Boolean
 
         Try
 
@@ -204,21 +205,28 @@ Public Class SuperTextBox
 
             If (Me.Text.Trim) = "" Then       've se tem texto
                 oErrorProvider.SetError(Me, "O campo '" & txtObrigatorio & "' é obrigatório.")
-                S_MsgBox("O campo '" & txtObrigatorio & "' é obrigatório.", eBotoes.Ok, , , eImagens.Atencao)
+
+                If bMsg Then
+                    S_MsgBox("O campo '" & txtObrigatorio & "' é obrigatório.", eBotoes.Ok, , , eImagens.Atencao)
+                End If
                 Me.Focus()
                 Return False
-            End If
+                End If
 
-            If (IsNumeric(Me.Text) = True) Then
-                If bZerado = True AndAlso CDec(Me.Text) = 0 Then
+                If (IsNumeric(Me.Text) = True) Then
+                    If bZerado = True AndAlso CDec(Me.Text) = 0 Then
                     oErrorProvider.SetError(Me, "O campo '" & txtObrigatorio & "' não pode ser zero.")
-                    S_MsgBox("O campo '" & txtObrigatorio & "' não pode ser zero.", eBotoes.Ok, , , eImagens.Atencao)
+
+                    If bMsg Then
+                        S_MsgBox("O campo '" & txtObrigatorio & "' não pode ser zero.", eBotoes.Ok, , , eImagens.Atencao)
+                    End If
+
                     Me.Focus()
                     Return False
+                    End If
                 End If
-            End If
 
-            Return True
+                Return True
 
         Catch ex As Exception
             LogaErro("Erro em SuperTextBox::VerificaObrigatorio: " & ex.Message)

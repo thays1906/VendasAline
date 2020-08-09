@@ -284,9 +284,9 @@ Partial Class frmNovoProduto
         Me.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFechar.Image = Global.ControleVendas.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(928, 4)
+        Me.btnFechar.Location = New System.Drawing.Point(920, -1)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(57, 51)
+        Me.btnFechar.Size = New System.Drawing.Size(70, 56)
         Me.btnFechar.TabIndex = 1
         Me.btnFechar.UseVisualStyleBackColor = False
         '

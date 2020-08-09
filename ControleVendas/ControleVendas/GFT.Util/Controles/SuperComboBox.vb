@@ -221,7 +221,8 @@ Public Class SuperComboBox
 
     Public Function VerificaObrigatorio(Optional ByVal bZerado As Boolean = False,
                                         Optional ByVal vlrMin As Decimal = Nothing,
-                                        Optional ByVal vlrMax As Decimal = Nothing) As Boolean
+                                        Optional ByVal vlrMax As Decimal = Nothing,
+                                        Optional ByVal bMsg As Boolean = True) As Boolean
 
         Try
             'Nao eh obrigatorio, retorna ok
@@ -233,7 +234,11 @@ Public Class SuperComboBox
             'If x(0) = "1" Then          'se estiver marcado com '1' (obrigatorio)
             If chaveCombo = "0" Or chaveCombo = "" Then 'Vazio ou Todos...
                 oErrorProvider.SetError(Me, "O campo '" & txtObrigatorio & "' é obrigatório.")
-                S_MsgBox("O campo '" & Me.SuperTxtObrigatorio & "' é obrigatório.", eBotoes.Ok, , , eImagens.Atencao)
+
+                If bMsg Then
+                    S_MsgBox("O campo '" & Me.SuperTxtObrigatorio & "' é obrigatório.", eBotoes.Ok, , , eImagens.Atencao)
+                End If
+
                 Me.Focus()
                 Return False
                 Exit Function

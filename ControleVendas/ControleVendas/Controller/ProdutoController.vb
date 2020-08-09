@@ -10,7 +10,7 @@ Public Class ProdutoController
 
     Public Function Pesquisar(ByVal nome As String, ByVal cor As String) As List(Of Produto)
 
-        Return BancoContext.Produtos.Where(Function(c) (nome = "" Or c.Nome.Contains(nome)) And (cor = "" Or c.Cor.Contains(cor))).ToList()
+        Return BancoContext.Produtos.Where(Function(c) (nome = "" Or c.rNome.Contains(nome)) And (cor = "" Or c.rCor.Contains(cor))).ToList()
 
 
     End Function
@@ -36,7 +36,7 @@ Public Class ProdutoController
         Dim produtoBanco = BancoContext.Produtos.Find(ProdutoID)
 
         '.State = entity.EntityState.Modified
-        produto.ProdutoID = produtoBanco.ProdutoID
+        produto.cProduto = produtoBanco.cProduto
         Dim entity As DbEntityEntry(Of Produto) = BancoContext.Entry(produtoBanco)
         entity.CurrentValues.SetValues(produto)
         'produtoBanco.ProdutoID = ProdutoID

@@ -41,9 +41,9 @@ Partial Class frm_msgbox
         '
         Me.lblTexto.BackColor = System.Drawing.Color.Transparent
         Me.lblTexto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTexto.Location = New System.Drawing.Point(9, 51)
+        Me.lblTexto.Location = New System.Drawing.Point(3, 62)
         Me.lblTexto.Name = "lblTexto"
-        Me.lblTexto.Size = New System.Drawing.Size(488, 109)
+        Me.lblTexto.Size = New System.Drawing.Size(497, 125)
         Me.lblTexto.TabIndex = 1
         Me.lblTexto.Text = "Texto label messagebox"
         Me.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -52,7 +52,7 @@ Partial Class frm_msgbox
         '
         Me.imgMsgBox.BackColor = System.Drawing.Color.Transparent
         Me.imgMsgBox.Image = Global.GFT.Util.My.Resources.Resources.btnOk
-        Me.imgMsgBox.Location = New System.Drawing.Point(7, 77)
+        Me.imgMsgBox.Location = New System.Drawing.Point(12, 90)
         Me.imgMsgBox.Name = "imgMsgBox"
         Me.imgMsgBox.Size = New System.Drawing.Size(53, 53)
         Me.imgMsgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -61,47 +61,48 @@ Partial Class frm_msgbox
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.ForestGreen
-        Me.PictureBox2.Location = New System.Drawing.Point(-31, 197)
+        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.PictureBox2.Location = New System.Drawing.Point(-23, 230)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1100, 21)
+        Me.PictureBox2.Size = New System.Drawing.Size(1100, 35)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox2.TabIndex = 5
         Me.PictureBox2.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.GFT.Util.My.Resources.Resources.LOGO1_2_fw
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(286, 30)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.Size = New System.Drawing.Size(164, 53)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.ForestGreen
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(507, 35)
+        Me.Panel1.Size = New System.Drawing.Size(507, 56)
         Me.Panel1.TabIndex = 7
         '
         'btn3
         '
-        Me.btn3.BackColor = System.Drawing.Color.Transparent
-        Me.btn3.BackgroundImage = CType(resources.GetObject("btn3.BackgroundImage"), System.Drawing.Image)
+        Me.btn3.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn3.BackgroundImage = Global.GFT.Util.My.Resources.Resources.botao2
         Me.btn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn3.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.btn3.FlatAppearance.BorderSize = 1
+        Me.btn3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
+        Me.btn3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray
         Me.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn3.Font = New System.Drawing.Font("Verdana", 9.0!)
         Me.btn3.ForeColor = System.Drawing.Color.Black
         Me.btn3.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn3.Location = New System.Drawing.Point(312, 165)
+        Me.btn3.Location = New System.Drawing.Point(306, 198)
         Me.btn3.Name = "btn3"
         Me.btn3.Size = New System.Drawing.Size(78, 26)
         Me.btn3.TabIndex = 4
@@ -111,17 +112,18 @@ Partial Class frm_msgbox
         '
         'btn2
         '
-        Me.btn2.BackColor = System.Drawing.Color.Transparent
-        Me.btn2.BackgroundImage = CType(resources.GetObject("btn2.BackgroundImage"), System.Drawing.Image)
+        Me.btn2.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn2.BackgroundImage = Global.GFT.Util.My.Resources.Resources.botao2
         Me.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.btn2.FlatAppearance.BorderSize = 1
+        Me.btn2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
+        Me.btn2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray
         Me.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn2.Font = New System.Drawing.Font("Verdana", 9.0!)
         Me.btn2.ForeColor = System.Drawing.Color.Black
         Me.btn2.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn2.Location = New System.Drawing.Point(222, 165)
+        Me.btn2.Location = New System.Drawing.Point(222, 198)
         Me.btn2.Name = "btn2"
         Me.btn2.Size = New System.Drawing.Size(78, 26)
         Me.btn2.TabIndex = 3
@@ -131,17 +133,18 @@ Partial Class frm_msgbox
         '
         'btn1
         '
-        Me.btn1.BackColor = System.Drawing.Color.Transparent
-        Me.btn1.BackgroundImage = CType(resources.GetObject("btn1.BackgroundImage"), System.Drawing.Image)
+        Me.btn1.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn1.BackgroundImage = Global.GFT.Util.My.Resources.Resources.botao2a
         Me.btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.btn1.FlatAppearance.BorderSize = 1
+        Me.btn1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
+        Me.btn1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
+        Me.btn1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray
         Me.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn1.Font = New System.Drawing.Font("Verdana", 9.0!)
         Me.btn1.ForeColor = System.Drawing.Color.Black
         Me.btn1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn1.Location = New System.Drawing.Point(137, 165)
+        Me.btn1.Location = New System.Drawing.Point(138, 198)
         Me.btn1.Name = "btn1"
         Me.btn1.Size = New System.Drawing.Size(78, 26)
         Me.btn1.TabIndex = 2
@@ -154,7 +157,7 @@ Partial Class frm_msgbox
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(507, 208)
+        Me.ClientSize = New System.Drawing.Size(507, 266)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.imgMsgBox)
         Me.Controls.Add(Me.lblTexto)
@@ -174,6 +177,7 @@ Partial Class frm_msgbox
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
