@@ -6,6 +6,11 @@ Public Class frmNovoCliente
     Public cCliente As Decimal = Nothing
     Public cErro As Decimal = Nothing
     Public cOk As Decimal = Nothing
+    Public bAlterado As Boolean = False
+    Public rTelefone As String = Nothing
+    Public cEstado As Decimal = Nothing
+    Public cCidade As Decimal = Nothing
+    Public rCpf As String = Nothing
 
     Sub New(ByVal _cCliente As Decimal)
 
@@ -17,12 +22,16 @@ Public Class frmNovoCliente
 
     End Sub
     Private Sub frmNovoCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cor(Me, Collor.CinzaEscuro)
+        Cor(Me, Collor.CinzaAzulado)
 
         CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
 
         CarregarCombo()
+
+        If cCliente > 0 Then
+            PreencheCampo()
+        End If
     End Sub
 
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
@@ -48,24 +57,24 @@ Public Class frmNovoCliente
     End Sub
 
     Private Sub cbEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbEstado.SelectedIndexChanged
+        Dim rsCidade As SuperDataSet = Nothing
         Try
-            oDataSet = New SuperDataSet()
+            rsCidade = New SuperDataSet()
 
-            oDataSet = pCidade_Estado.ObterCidade(CDec(cbEstado.ObterChaveCombo))
+            rsCidade = pCidade_Estado.ObterCidade(CDec(cbEstado.ObterChaveCombo))
 
-            If oDataSet IsNot Nothing Then
-                cbCidade.PreencheComboDS(oDataSet, "rCidade", "cCidade", SuperComboBox.PrimeiroValor.Selecione)
+            If rsCidade IsNot Nothing Then
+                cbCidade.PreencheComboDS(rsCidade, "rCidade", "cCidade", SuperComboBox.PrimeiroValor.Selecione)
             Else
                 cbCidade.Items.Clear()
                 cbCidade.Adiciona(0, "::. Selecione um Estado .::")
-                cbCidade.PosicionaRegistroCombo(0)
             End If
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
         Finally
-            If oDataSet IsNot Nothing Then
-                oDataSet.Dispose()
+            If rsCidade IsNot Nothing Then
+                rsCidade.Dispose()
             End If
         End Try
     End Sub
@@ -75,73 +84,178 @@ Public Class frmNovoCliente
     End Sub
 
     Private Sub Salvar()
-        Dim tel As String = Nothing
         Try
-            If txtCliente.Text <> "" Then
+            If VerificarDados() Then
+
                 If cCliente = 0 Then
-                    tel = txtTelefone.Text.Replace("(", "")
-                    tel = tel.Replace(")", "")
-                    tel = tel.Replace("-", "")
 
 
                     If pCliente.Incluir(dtCadastro.Value,
-                                     txtCliente.Text,
-                                     txtCpf.Text,
-                                     tel,
-                                     txtEmail.Text,
-                                     txtRua.Text,
-                                     txtNumero.Text, txtBairro.Text,
-                                     CDec(cbCidade.ObterChaveCombo),
-                                     CDec(cbEstado.ObterChaveCombo)) Then
+                                         txtCliente.Text,
+                                         rCpf,
+                                         rTelefone,
+                                         txtEmail.Text,
+                                         txtRua.Text,
+                                         txtNumero.Text,
+                                         txtBairro.Text,
+                                         cCidade,
+                                         cEstado) Then
 
                         cOk += 1
+                        bAlterado = True
                     Else
                         cErro += 1
                     End If
                 Else
+
                     If pCliente.Alterar(cCliente,
                                         dtCadastro.Value,
                                         txtCliente.Text,
-                                        txtCpf.Text,
-                                        txtTelefone.Text,
+                                        rCpf,
+                                        rTelefone,
                                         txtEmail.Text,
                                         txtRua.Text,
                                         txtNumero.Text, txtBairro.Text,
-                                        CDec(cbCidade.ObterChaveCombo),
-                                        CDec(cbEstado.ObterChaveCombo)) Then
+                                        cCidade,
+                                        cEstado) Then
                         cOk += 1
+                        bAlterado = True
                     Else
                         cErro += 1
                     End If
 
                 End If
 
-                If cErro = 0 Then
+                If cErro = 0 And cOk <> 0 Then
 
-                    S_MsgBox("Cliente cadastrado com sucesso!",
-                         eBotoes.Ok,
-                         "Picarruchas",,
-                         eImagens.FileOK)
+                    If cCliente = 0 Then
+
+                        S_MsgBox("Cliente cadastrado com sucesso!",
+                                 eBotoes.Ok,
+                                 "Picarruchas",,
+                                 eImagens.FileOK)
+                    Else
+                        S_MsgBox("Dados alterado com sucesso!",
+                                 eBotoes.Ok,
+                                 "Picarruchas",,
+                                 eImagens.FileOK)
+
+                    End If
+
                 Else
 
                     S_MsgBox("Desculpe, não foi possível realizar o cadastro.",
-                         eBotoes.Ok,
-                         "Falha",,
-                         eImagens.Cancel)
-
+                             eBotoes.Ok,
+                             "Falha",,
+                             eImagens.Cancel)
                 End If
 
-            Else
-                S_MsgBox("Por favor, informe o nome do cliente.",
-                         eBotoes.Ok,
-                         "Necessário o nome.",,
-                         eImagens.Atencao)
+                Me.bAlterado.ToString()
+                Me.Close()
             End If
-
-
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
         End Try
+    End Sub
+
+    Private Sub PreencheCampo()
+        Try
+            oDataSet = pCliente.Obter(cCliente)
+
+            dtCadastro.Enabled = False
+
+            If oDataSet.TotalRegistros > 0 Then
+
+                tabCtrlNovoCli.TabPages(0).Text = "Dados do Cliente"
+                btnSalvar.Text = "Salvar alterações"
+
+                dtCadastro.Value = CDate(oDataSet("dtCadastro"))
+                txtCliente.Text = oDataSet("rNome").ToString
+                txtCpf.Text = oDataSet("rCpf").ToString
+                txtTelefone.Text = oDataSet("rTelefone").ToString
+                txtEmail.Text = oDataSet("rEmail").ToString
+                txtRua.Text = oDataSet("rLogradouro").ToString
+                txtNumero.Text = oDataSet("rNumero").ToString
+                txtBairro.Text = oDataSet("rBairro").ToString
+                cbEstado.PosicionaRegistroCombo(CDec(oDataSet("cEstado")))
+                cbCidade.PosicionaRegistroCombo(CDec(oDataSet("cCidade")))
+            Else
+                S_MsgBox("Desculpe, não foi possível localizar registro.",
+                         eBotoes.Ok,
+                         "Houve um erro.",,
+                         eImagens.Cancel)
+
+                Me.Close()
+            End If
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
+        End Try
+    End Sub
+    Private Function VerificarDados() As Boolean
+        Try
+            If String.IsNullOrEmpty(txtCliente.Text) Then
+
+                lblClienteObg.Text = "É necessário informar o nome do cliente, para realizar o cadastro."
+                lblClienteObg.Visible = True
+
+                Return False
+            End If
+
+            If cbEstado.SelectedIndex <> 0 Then
+                cEstado = CDec(cbEstado.ObterChaveCombo)
+            End If
+
+            If cbCidade.SelectedIndex <> 0 Then
+                cCidade = CDec(cbCidade.ObterChaveCombo)
+            End If
+
+            If txtCpf.MaskCompleted Then
+
+                rCpf = txtCpf.Text
+
+            Else
+
+                txtCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
+
+                If txtCpf.Text <> "" Then
+
+                    S_MsgBox("Campo CPF, não está preenchido corretamente.",
+                             eBotoes.Ok,
+                             "Picarruchas",,
+                             eImagens.Atencao)
+                    Return False
+                End If
+            End If
+
+            If txtTelefone.MaskCompleted Then
+
+                rTelefone = txtTelefone.Text
+
+            Else
+
+                txtTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
+
+                If txtTelefone.Text <> "" Then
+                    S_MsgBox("Campo Telefone, não está preenchido corretamente.",
+                             eBotoes.Ok,
+                             "Picarruchas",,
+                             eImagens.Atencao)
+                    Return False
+
+                End If
+            End If
+
+            Return True
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
+            Return False
+        End Try
+    End Function
+
+    Private Sub txtCliente_Enter(sender As Object, e As EventArgs) Handles txtCliente.Enter
+        lblClienteObg.Visible = False
     End Sub
 End Class

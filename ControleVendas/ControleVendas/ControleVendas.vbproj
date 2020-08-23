@@ -177,10 +177,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ItemProduto.vb" />
     <Compile Include="Context\BancoContext.vb" />
     <Compile Include="Controller\ProdutoController.vb" />
     <Compile Include="DAL\pCidade_Estado.vb" />
     <Compile Include="DAL\pCliente.vb" />
+    <Compile Include="DAL\pEstoque.vb" />
+    <Compile Include="DAL\pImagem.vb" />
+    <Compile Include="DAL\pItensVenda.vb" />
     <Compile Include="DAL\pProduto.vb" />
     <Compile Include="DAL\pVenda.vb" />
     <Compile Include="Formulários\frmAbout.Designer.vb">
@@ -193,6 +197,36 @@
       <DependentUpon>frmClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\frmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmEntrada.Designer.vb">
+      <DependentUpon>frmEntrada.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmEntrada.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmEstoque.Designer.vb">
+      <DependentUpon>frmEstoque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmEstoque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmItemVenda.Designer.vb">
+      <DependentUpon>frmItemVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmItemVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmListaProdutos.Designer.vb">
+      <DependentUpon>frmListaProdutos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmListaProdutos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmMsg.Designer.vb">
+      <DependentUpon>frmMsg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmMsg.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmNovoCliente.Designer.vb">
@@ -218,6 +252,18 @@
       <DependentUpon>frmProdutos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\frmProdutos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmVendaDados.Designer.vb">
+      <DependentUpon>frmVendaDados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmVendaDados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmVendaFinalizada.Designer.vb">
+      <DependentUpon>frmVendaFinalizada.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmVendaFinalizada.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmVendas.Designer.vb">
@@ -259,6 +305,21 @@
     <EmbeddedResource Include="Formulários\frmClientes.resx">
       <DependentUpon>frmClientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmEntrada.resx">
+      <DependentUpon>frmEntrada.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmEstoque.resx">
+      <DependentUpon>frmEstoque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmItemVenda.resx">
+      <DependentUpon>frmItemVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmListaProdutos.resx">
+      <DependentUpon>frmListaProdutos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmMsg.resx">
+      <DependentUpon>frmMsg.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmNovoCliente.resx">
       <DependentUpon>frmNovoCliente.vb</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmProdutos.resx">
       <DependentUpon>frmProdutos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmVendaDados.resx">
+      <DependentUpon>frmVendaDados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmVendaFinalizada.resx">
+      <DependentUpon>frmVendaFinalizada.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmVendas.resx">
       <DependentUpon>frmVendas.vb</DependentUpon>
@@ -365,6 +432,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.xml" />
+    <None Include="Resources\iconViewFile.png" />
+    <None Include="Resources\iconCestaSearch48.png" />
+    <None Include="Resources\iconCestaMoney48.png" />
+    <None Include="Resources\iconCesta48.png" />
+    <None Include="Resources\iconCestaAdd48.png" />
+    <None Include="Resources\iconCestaRemove48.png" />
+    <None Include="Resources\iconRefresh.png" />
+    <None Include="Resources\iconSaida1.png" />
+    <None Include="Resources\iconeEntrada.png" />
+    <None Include="Resources\iconSaida.png" />
+    <None Include="Resources\iconFIlterRemove.png" />
+    <None Include="Resources\iconFilter.png" />
+    <None Include="Resources\iconPrint.png" />
+    <None Include="Resources\iconEstoque32x.png" />
+    <None Include="Resources\icon_Voltar.png" />
+    <None Include="Resources\iconVoltar.fw.png" />
+    <None Include="Resources\iconRemove.png" />
+    <None Include="Resources\iconSalvar1.png" />
+    <None Include="Resources\iconSapato256.png" />
+    <None Include="Resources\iconCalculadora.png" />
+    <None Include="Resources\iconCalc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

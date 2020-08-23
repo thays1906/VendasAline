@@ -26,24 +26,22 @@ Partial Class frm_msgbox
         Me.lblTexto = New System.Windows.Forms.Label()
         Me.imgMsgBox = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn3 = New GFT.Util.SuperButton()
         Me.btn2 = New GFT.Util.SuperButton()
         Me.btn1 = New GFT.Util.SuperButton()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         CType(Me.imgMsgBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTexto
         '
         Me.lblTexto.BackColor = System.Drawing.Color.Transparent
         Me.lblTexto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTexto.Location = New System.Drawing.Point(3, 62)
+        Me.lblTexto.Location = New System.Drawing.Point(0, 38)
         Me.lblTexto.Name = "lblTexto"
-        Me.lblTexto.Size = New System.Drawing.Size(497, 125)
+        Me.lblTexto.Size = New System.Drawing.Size(507, 149)
         Me.lblTexto.TabIndex = 1
         Me.lblTexto.Text = "Texto label messagebox"
         Me.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -52,7 +50,7 @@ Partial Class frm_msgbox
         '
         Me.imgMsgBox.BackColor = System.Drawing.Color.Transparent
         Me.imgMsgBox.Image = Global.GFT.Util.My.Resources.Resources.btnOk
-        Me.imgMsgBox.Location = New System.Drawing.Point(12, 90)
+        Me.imgMsgBox.Location = New System.Drawing.Point(3, 90)
         Me.imgMsgBox.Name = "imgMsgBox"
         Me.imgMsgBox.Size = New System.Drawing.Size(53, 53)
         Me.imgMsgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -61,33 +59,14 @@ Partial Class frm_msgbox
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
-        Me.PictureBox2.Location = New System.Drawing.Point(-23, 230)
+        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(120, Byte), Integer))
+        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 231)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1100, 35)
+        Me.PictureBox2.Size = New System.Drawing.Size(507, 35)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox2.TabIndex = 5
         Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(164, 53)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(86, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(507, 56)
-        Me.Panel1.TabIndex = 7
         '
         'btn3
         '
@@ -152,13 +131,24 @@ Partial Class frm_msgbox
         Me.btn1.UseCompatibleTextRendering = True
         Me.btn1.UseVisualStyleBackColor = False
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(120, Byte), Integer))
+        Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox3.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(507, 35)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox3.TabIndex = 7
+        Me.PictureBox3.TabStop = False
+        '
         'frm_msgbox
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(507, 266)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.imgMsgBox)
         Me.Controls.Add(Me.lblTexto)
         Me.Controls.Add(Me.PictureBox2)
@@ -175,19 +165,16 @@ Partial Class frm_msgbox
         Me.Text = "Texto messagebox!"
         CType(Me.imgMsgBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Public WithEvents lblTexto As System.Windows.Forms.Label
     Friend WithEvents imgMsgBox As System.Windows.Forms.PictureBox
     Friend WithEvents btn3 As GFT.Util.SuperButton
     Friend WithEvents btn2 As GFT.Util.SuperButton
     Friend WithEvents btn1 As GFT.Util.SuperButton
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox3 As PictureBox
 End Class

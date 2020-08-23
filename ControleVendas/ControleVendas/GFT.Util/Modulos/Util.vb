@@ -106,7 +106,7 @@ Public Module Util
                     oForm.Focus()
                     Exit Sub
                 End If
-                oForm.Close()
+                ' oForm.Close()
             Next
             mostrarFormulario(oMdiContainer, formulario, n_nova_tela)
         Catch ex As Exception

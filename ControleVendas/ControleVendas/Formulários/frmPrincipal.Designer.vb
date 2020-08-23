@@ -24,11 +24,14 @@ Partial Class frmPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ConfiguraçõesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProdutosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstoqueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JanelasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,30 +41,47 @@ Partial Class frmPrincipal
         Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.gbPrincipal = New System.Windows.Forms.GroupBox()
-        Me.tabCtrlProduto = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblTotalVendas = New System.Windows.Forms.Label()
+        Me.btnTotalVendaPrincipal = New System.Windows.Forms.Button()
+        Me.pnlEstoqueMin = New System.Windows.Forms.Panel()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.btnEstoqueMin = New System.Windows.Forms.Button()
+        Me.dgEstoqueBaixo = New GFT.Util.SuperDataGridView()
+        Me.gbAcessoRapido = New System.Windows.Forms.GroupBox()
+        Me.btnSaidaPrincipal = New System.Windows.Forms.Button()
+        Me.btnNovoClientePrincipal = New System.Windows.Forms.Button()
+        Me.btnEntradaPrincipal = New System.Windows.Forms.Button()
+        Me.btnConsultaVendaPrincipal = New System.Windows.Forms.Button()
+        Me.btnNovoProdutoPrincipal = New System.Windows.Forms.Button()
+        Me.ToolTipPrincipal = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusCima.SuspendLayout()
         Me.StatusBaixo.SuspendLayout()
         Me.gbPrincipal.SuspendLayout()
-        Me.tabCtrlProduto.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.pnlEstoqueMin.SuspendLayout()
+        CType(Me.dgEstoqueBaixo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbAcessoRapido.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.AllowItemReorder = True
         Me.MenuStrip1.AutoSize = False
-        Me.MenuStrip1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.MenuStrip1.BackColor = System.Drawing.Color.White
         Me.MenuStrip1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraçõesToolStripMenuItem, Me.ProdutosToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.VendasToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.SobreToolStripMenuItem, Me.LogoutToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraçõesToolStripMenuItem, Me.ProdutosToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.VendasToolStripMenuItem, Me.EstoqueToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.SobreToolStripMenuItem, Me.LogoutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.MdiWindowListItem = Me.JanelasToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1202, 75)
+        Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.MenuStrip1.ShowItemToolTips = True
+        Me.MenuStrip1.Size = New System.Drawing.Size(1525, 75)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -72,7 +92,8 @@ Partial Class frmPrincipal
         Me.ConfiguraçõesToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconEngrenagem
         Me.ConfiguraçõesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConfiguraçõesToolStripMenuItem.Name = "ConfiguraçõesToolStripMenuItem"
-        Me.ConfiguraçõesToolStripMenuItem.Size = New System.Drawing.Size(233, 71)
+        Me.ConfiguraçõesToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.ConfiguraçõesToolStripMenuItem.Size = New System.Drawing.Size(194, 71)
         Me.ConfiguraçõesToolStripMenuItem.Text = "Configurações"
         '
         'ProdutosToolStripMenuItem
@@ -82,8 +103,10 @@ Partial Class frmPrincipal
         Me.ProdutosToolStripMenuItem.Image = CType(resources.GetObject("ProdutosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ProdutosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ProdutosToolStripMenuItem.Name = "ProdutosToolStripMenuItem"
-        Me.ProdutosToolStripMenuItem.Size = New System.Drawing.Size(176, 71)
+        Me.ProdutosToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.ProdutosToolStripMenuItem.Size = New System.Drawing.Size(148, 71)
         Me.ProdutosToolStripMenuItem.Text = "Produtos"
+        Me.ProdutosToolStripMenuItem.ToolTipText = "Clique aqui, para cadastrar ou consultar produtos."
         '
         'ClientesToolStripMenuItem
         '
@@ -92,25 +115,40 @@ Partial Class frmPrincipal
         Me.ClientesToolStripMenuItem.Image = CType(resources.GetObject("ClientesToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ClientesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(163, 71)
+        Me.ClientesToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(137, 71)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
+        Me.ClientesToolStripMenuItem.ToolTipText = "Clique aqui, para cadastrar ou consultar clientes"
         '
         'VendasToolStripMenuItem
         '
         Me.VendasToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.VendasToolStripMenuItem.ForeColor = System.Drawing.Color.Black
-        Me.VendasToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconVenda
+        Me.VendasToolStripMenuItem.Image = CType(resources.GetObject("VendasToolStripMenuItem.Image"), System.Drawing.Image)
         Me.VendasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.VendasToolStripMenuItem.Name = "VendasToolStripMenuItem"
-        Me.VendasToolStripMenuItem.Size = New System.Drawing.Size(155, 71)
+        Me.VendasToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.VendasToolStripMenuItem.Size = New System.Drawing.Size(133, 71)
         Me.VendasToolStripMenuItem.Text = "Vendas"
+        Me.VendasToolStripMenuItem.ToolTipText = "Clique aqui, para realizar uma venda, ou consultar."
+        '
+        'EstoqueToolStripMenuItem
+        '
+        Me.EstoqueToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconProduct
+        Me.EstoqueToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.EstoqueToolStripMenuItem.Name = "EstoqueToolStripMenuItem"
+        Me.EstoqueToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.EstoqueToolStripMenuItem.Size = New System.Drawing.Size(134, 71)
+        Me.EstoqueToolStripMenuItem.Text = "Estoque"
+        Me.EstoqueToolStripMenuItem.ToolTipText = "Clique aqui, para consultar o estoque, lançar entrada/saída."
         '
         'JanelasToolStripMenuItem
         '
         Me.JanelasToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconJanelas
         Me.JanelasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.JanelasToolStripMenuItem.Name = "JanelasToolStripMenuItem"
-        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(148, 71)
+        Me.JanelasToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(129, 71)
         Me.JanelasToolStripMenuItem.Text = "Janelas"
         '
         'SobreToolStripMenuItem
@@ -120,17 +158,20 @@ Partial Class frmPrincipal
         Me.SobreToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconAbout
         Me.SobreToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SobreToolStripMenuItem.Name = "SobreToolStripMenuItem"
-        Me.SobreToolStripMenuItem.Size = New System.Drawing.Size(139, 71)
+        Me.SobreToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.SobreToolStripMenuItem.Size = New System.Drawing.Size(120, 71)
         Me.SobreToolStripMenuItem.Text = "Sobre"
         '
         'LogoutToolStripMenuItem
         '
+        Me.LogoutToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.LogoutToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LogoutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.LogoutToolStripMenuItem.Image = Global.ControleVendas.My.Resources.Resources.iconLogout_48
         Me.LogoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(152, 71)
+        Me.LogoutToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(129, 71)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'StatusCima
@@ -142,7 +183,7 @@ Partial Class frmPrincipal
         Me.StatusCima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaption})
         Me.StatusCima.Location = New System.Drawing.Point(0, 75)
         Me.StatusCima.Name = "StatusCima"
-        Me.StatusCima.Size = New System.Drawing.Size(1202, 44)
+        Me.StatusCima.Size = New System.Drawing.Size(1525, 44)
         Me.StatusCima.SizingGrip = False
         Me.StatusCima.TabIndex = 3
         Me.StatusCima.Text = "StatusStrip1"
@@ -160,7 +201,7 @@ Partial Class frmPrincipal
         Me.txtCaption.Margin = New System.Windows.Forms.Padding(10, 3, 0, 2)
         Me.txtCaption.Name = "txtCaption"
         Me.txtCaption.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtCaption.Size = New System.Drawing.Size(1138, 39)
+        Me.txtCaption.Size = New System.Drawing.Size(1500, 39)
         Me.txtCaption.Spring = True
         Me.txtCaption.Text = "Dashboard"
         Me.txtCaption.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
@@ -172,9 +213,9 @@ Partial Class frmPrincipal
         Me.StatusBaixo.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(120, Byte), Integer))
         Me.StatusBaixo.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusBaixo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaptionHora})
-        Me.StatusBaixo.Location = New System.Drawing.Point(0, 498)
+        Me.StatusBaixo.Location = New System.Drawing.Point(0, 619)
         Me.StatusBaixo.Name = "StatusBaixo"
-        Me.StatusBaixo.Size = New System.Drawing.Size(1202, 44)
+        Me.StatusBaixo.Size = New System.Drawing.Size(1525, 44)
         Me.StatusBaixo.SizingGrip = False
         Me.StatusBaixo.TabIndex = 4
         Me.StatusBaixo.Text = "StatusStrip1"
@@ -188,7 +229,7 @@ Partial Class frmPrincipal
         Me.txtCaptionHora.ForeColor = System.Drawing.Color.White
         Me.txtCaptionHora.Name = "txtCaptionHora"
         Me.txtCaptionHora.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtCaptionHora.Size = New System.Drawing.Size(1187, 38)
+        Me.txtCaptionHora.Size = New System.Drawing.Size(1510, 39)
         Me.txtCaptionHora.Spring = True
         Me.txtCaptionHora.Text = "Data/Hora"
         Me.txtCaptionHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -203,81 +244,263 @@ Partial Class frmPrincipal
         Me.gbPrincipal.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbPrincipal.Controls.Add(Me.tabCtrlProduto)
-        Me.gbPrincipal.Location = New System.Drawing.Point(0, 122)
+        Me.gbPrincipal.Controls.Add(Me.Panel1)
+        Me.gbPrincipal.Controls.Add(Me.gbAcessoRapido)
+        Me.gbPrincipal.Location = New System.Drawing.Point(0, 103)
         Me.gbPrincipal.Name = "gbPrincipal"
-        Me.gbPrincipal.Size = New System.Drawing.Size(1202, 373)
+        Me.gbPrincipal.Size = New System.Drawing.Size(1525, 513)
         Me.gbPrincipal.TabIndex = 5
         Me.gbPrincipal.TabStop = False
         '
-        'tabCtrlProduto
+        'Panel1
         '
-        Me.tabCtrlProduto.Controls.Add(Me.TabPage1)
-        Me.tabCtrlProduto.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.tabCtrlProduto.Location = New System.Drawing.Point(27, 44)
-        Me.tabCtrlProduto.Name = "tabCtrlProduto"
-        Me.tabCtrlProduto.Padding = New System.Drawing.Point(190, 5)
-        Me.tabCtrlProduto.SelectedIndex = 0
-        Me.tabCtrlProduto.Size = New System.Drawing.Size(451, 203)
-        Me.tabCtrlProduto.TabIndex = 0
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Panel1.Controls.Add(Me.Panel2)
+        Me.Panel1.Controls.Add(Me.pnlEstoqueMin)
+        Me.Panel1.Location = New System.Drawing.Point(7, 125)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1506, 382)
+        Me.Panel1.TabIndex = 2
         '
-        'TabPage1
+        'Panel2
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TabPage1.Controls.Add(Me.TextBox2)
-        Me.TabPage1.Controls.Add(Me.Label2)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
-        Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 38)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(443, 161)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Estoque baixo"
+        Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel2.Controls.Add(Me.lblTotalVendas)
+        Me.Panel2.Controls.Add(Me.btnTotalVendaPrincipal)
+        Me.Panel2.Location = New System.Drawing.Point(5, 81)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(257, 149)
+        Me.Panel2.TabIndex = 2
         '
-        'TextBox2
+        'lblTotalVendas
         '
-        Me.TextBox2.ForeColor = System.Drawing.Color.Red
-        Me.TextBox2.Location = New System.Drawing.Point(314, 53)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox2.TabIndex = 3
-        Me.TextBox2.Text = "230"
+        Me.lblTotalVendas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.lblTotalVendas.AutoSize = True
+        Me.lblTotalVendas.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalVendas.ForeColor = System.Drawing.Color.ForestGreen
+        Me.lblTotalVendas.Location = New System.Drawing.Point(56, 79)
+        Me.lblTotalVendas.Name = "lblTotalVendas"
+        Me.lblTotalVendas.Size = New System.Drawing.Size(113, 32)
+        Me.lblTotalVendas.TabIndex = 4
+        Me.lblTotalVendas.Text = "R$ 0,00"
         '
-        'Label2
+        'btnTotalVendaPrincipal
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(309, 25)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(107, 25)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Sapatilha"
+        Me.btnTotalVendaPrincipal.BackColor = System.Drawing.Color.Transparent
+        Me.btnTotalVendaPrincipal.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnTotalVendaPrincipal.FlatAppearance.BorderSize = 0
+        Me.btnTotalVendaPrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTotalVendaPrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconRefresh
+        Me.btnTotalVendaPrincipal.Location = New System.Drawing.Point(0, 0)
+        Me.btnTotalVendaPrincipal.Name = "btnTotalVendaPrincipal"
+        Me.btnTotalVendaPrincipal.Size = New System.Drawing.Size(257, 53)
+        Me.btnTotalVendaPrincipal.TabIndex = 3
+        Me.btnTotalVendaPrincipal.Text = "Total de Vendas"
+        Me.btnTotalVendaPrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTipPrincipal.SetToolTip(Me.btnTotalVendaPrincipal, "Clique para atualizar.")
+        Me.btnTotalVendaPrincipal.UseVisualStyleBackColor = False
         '
-        'TextBox1
+        'pnlEstoqueMin
         '
-        Me.TextBox1.ForeColor = System.Drawing.Color.Red
-        Me.TextBox1.Location = New System.Drawing.Point(23, 53)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox1.TabIndex = 1
-        Me.TextBox1.Text = "500"
+        Me.pnlEstoqueMin.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.pnlEstoqueMin.AutoScroll = True
+        Me.pnlEstoqueMin.AutoSize = True
+        Me.pnlEstoqueMin.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.pnlEstoqueMin.Controls.Add(Me.lblTotal)
+        Me.pnlEstoqueMin.Controls.Add(Me.txtTotal)
+        Me.pnlEstoqueMin.Controls.Add(Me.btnEstoqueMin)
+        Me.pnlEstoqueMin.Controls.Add(Me.dgEstoqueBaixo)
+        Me.pnlEstoqueMin.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.pnlEstoqueMin.Location = New System.Drawing.Point(268, 81)
+        Me.pnlEstoqueMin.Name = "pnlEstoqueMin"
+        Me.pnlEstoqueMin.Size = New System.Drawing.Size(798, 301)
+        Me.pnlEstoqueMin.TabIndex = 1
         '
-        'Label1
+        'lblTotal
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(18, 25)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(155, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Total de Items"
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(10, 53)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(152, 18)
+        Me.lblTotal.TabIndex = 2
+        Me.lblTotal.Text = "Total de Produtos"
+        '
+        'txtTotal
+        '
+        Me.txtTotal.BackColor = System.Drawing.SystemColors.InactiveBorder
+        Me.txtTotal.Location = New System.Drawing.Point(13, 74)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(149, 27)
+        Me.txtTotal.TabIndex = 1
+        Me.ToolTipPrincipal.SetToolTip(Me.txtTotal, "Total de Produtos com estoque baixo.")
+        '
+        'btnEstoqueMin
+        '
+        Me.btnEstoqueMin.BackColor = System.Drawing.Color.Transparent
+        Me.btnEstoqueMin.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnEstoqueMin.FlatAppearance.BorderSize = 0
+        Me.btnEstoqueMin.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEstoqueMin.Location = New System.Drawing.Point(0, 0)
+        Me.btnEstoqueMin.Name = "btnEstoqueMin"
+        Me.btnEstoqueMin.Size = New System.Drawing.Size(798, 45)
+        Me.btnEstoqueMin.TabIndex = 0
+        Me.btnEstoqueMin.Text = "Estoque Mínimo"
+        Me.btnEstoqueMin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTipPrincipal.SetToolTip(Me.btnEstoqueMin, "Clique para acessar o Estoque")
+        Me.btnEstoqueMin.UseVisualStyleBackColor = False
+        '
+        'dgEstoqueBaixo
+        '
+        Me.dgEstoqueBaixo.AdicionarCheckBox = False
+        Me.dgEstoqueBaixo.AllowUserToAddRows = False
+        Me.dgEstoqueBaixo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgEstoqueBaixo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.dgEstoqueBaixo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgEstoqueBaixo.BackgroundColor = System.Drawing.Color.White
+        Me.dgEstoqueBaixo.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgEstoqueBaixo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.dgEstoqueBaixo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgEstoqueBaixo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgEstoqueBaixo.ColumnHeadersHeight = 50
+        Me.dgEstoqueBaixo.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
+        Me.dgEstoqueBaixo.CorTextoCabeçalho = System.Drawing.Color.White
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgEstoqueBaixo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgEstoqueBaixo.EnableHeadersVisualStyles = False
+        Me.dgEstoqueBaixo.Location = New System.Drawing.Point(3, 107)
+        Me.dgEstoqueBaixo.Name = "dgEstoqueBaixo"
+        Me.dgEstoqueBaixo.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dgEstoqueBaixo.RowHeadersVisible = False
+        Me.dgEstoqueBaixo.RowHeadersWidth = 51
+        Me.dgEstoqueBaixo.RowTemplate.Height = 24
+        Me.dgEstoqueBaixo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgEstoqueBaixo.Size = New System.Drawing.Size(795, 191)
+        Me.dgEstoqueBaixo.TabIndex = 0
+        Me.ToolTipPrincipal.SetToolTip(Me.dgEstoqueBaixo, "Lista de Produtos abaixo do estoque mínimo")
+        '
+        'gbAcessoRapido
+        '
+        Me.gbAcessoRapido.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.gbAcessoRapido.Controls.Add(Me.btnSaidaPrincipal)
+        Me.gbAcessoRapido.Controls.Add(Me.btnNovoClientePrincipal)
+        Me.gbAcessoRapido.Controls.Add(Me.btnEntradaPrincipal)
+        Me.gbAcessoRapido.Controls.Add(Me.btnConsultaVendaPrincipal)
+        Me.gbAcessoRapido.Controls.Add(Me.btnNovoProdutoPrincipal)
+        Me.gbAcessoRapido.Dock = System.Windows.Forms.DockStyle.Top
+        Me.gbAcessoRapido.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbAcessoRapido.ForeColor = System.Drawing.Color.White
+        Me.gbAcessoRapido.Location = New System.Drawing.Point(3, 16)
+        Me.gbAcessoRapido.Name = "gbAcessoRapido"
+        Me.gbAcessoRapido.Size = New System.Drawing.Size(1519, 100)
+        Me.gbAcessoRapido.TabIndex = 0
+        Me.gbAcessoRapido.TabStop = False
+        Me.gbAcessoRapido.Text = "Acesso Rápido"
+        Me.ToolTipPrincipal.SetToolTip(Me.gbAcessoRapido, "Atalhos")
+        '
+        'btnSaidaPrincipal
+        '
+        Me.btnSaidaPrincipal.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnSaidaPrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaidaPrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconSaida
+        Me.btnSaidaPrincipal.Location = New System.Drawing.Point(1180, 32)
+        Me.btnSaidaPrincipal.Name = "btnSaidaPrincipal"
+        Me.btnSaidaPrincipal.Size = New System.Drawing.Size(223, 53)
+        Me.btnSaidaPrincipal.TabIndex = 4
+        Me.btnSaidaPrincipal.Text = " &Saída"
+        Me.btnSaidaPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSaidaPrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnSaidaPrincipal.UseVisualStyleBackColor = False
+        '
+        'btnNovoClientePrincipal
+        '
+        Me.btnNovoClientePrincipal.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnNovoClientePrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNovoClientePrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconAddBlue
+        Me.btnNovoClientePrincipal.Location = New System.Drawing.Point(389, 32)
+        Me.btnNovoClientePrincipal.Name = "btnNovoClientePrincipal"
+        Me.btnNovoClientePrincipal.Size = New System.Drawing.Size(223, 53)
+        Me.btnNovoClientePrincipal.TabIndex = 3
+        Me.btnNovoClientePrincipal.Text = " Cliente"
+        Me.btnNovoClientePrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNovoClientePrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnNovoClientePrincipal.UseVisualStyleBackColor = False
+        '
+        'btnEntradaPrincipal
+        '
+        Me.btnEntradaPrincipal.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnEntradaPrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEntradaPrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconeEntrada
+        Me.btnEntradaPrincipal.Location = New System.Drawing.Point(929, 32)
+        Me.btnEntradaPrincipal.Name = "btnEntradaPrincipal"
+        Me.btnEntradaPrincipal.Size = New System.Drawing.Size(223, 53)
+        Me.btnEntradaPrincipal.TabIndex = 2
+        Me.btnEntradaPrincipal.Text = " &Entrada"
+        Me.btnEntradaPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEntradaPrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnEntradaPrincipal.UseVisualStyleBackColor = False
+        '
+        'btnConsultaVendaPrincipal
+        '
+        Me.btnConsultaVendaPrincipal.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnConsultaVendaPrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConsultaVendaPrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconePesquisar
+        Me.btnConsultaVendaPrincipal.Location = New System.Drawing.Point(637, 32)
+        Me.btnConsultaVendaPrincipal.Name = "btnConsultaVendaPrincipal"
+        Me.btnConsultaVendaPrincipal.Size = New System.Drawing.Size(265, 53)
+        Me.btnConsultaVendaPrincipal.TabIndex = 1
+        Me.btnConsultaVendaPrincipal.Text = " &Consultar Vendas"
+        Me.btnConsultaVendaPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnConsultaVendaPrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnConsultaVendaPrincipal.UseVisualStyleBackColor = False
+        '
+        'btnNovoProdutoPrincipal
+        '
+        Me.btnNovoProdutoPrincipal.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNovoProdutoPrincipal.Image = Global.ControleVendas.My.Resources.Resources.iconAddBlue
+        Me.btnNovoProdutoPrincipal.Location = New System.Drawing.Point(137, 32)
+        Me.btnNovoProdutoPrincipal.Name = "btnNovoProdutoPrincipal"
+        Me.btnNovoProdutoPrincipal.Size = New System.Drawing.Size(223, 53)
+        Me.btnNovoProdutoPrincipal.TabIndex = 0
+        Me.btnNovoProdutoPrincipal.Text = " Produto"
+        Me.btnNovoProdutoPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNovoProdutoPrincipal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTipPrincipal.SetToolTip(Me.btnNovoProdutoPrincipal, "Clique aqui, para cadastrar um produto.")
+        Me.btnNovoProdutoPrincipal.UseVisualStyleBackColor = True
+        '
+        'ToolTipPrincipal
+        '
+        Me.ToolTipPrincipal.IsBalloon = True
+        Me.ToolTipPrincipal.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         '
         'frmPrincipal
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1202, 542)
+        Me.ClientSize = New System.Drawing.Size(1525, 663)
         Me.Controls.Add(Me.StatusBaixo)
         Me.Controls.Add(Me.StatusCima)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.gbPrincipal)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmPrincipal"
@@ -291,9 +514,14 @@ Partial Class frmPrincipal
         Me.StatusBaixo.ResumeLayout(False)
         Me.StatusBaixo.PerformLayout()
         Me.gbPrincipal.ResumeLayout(False)
-        Me.tabCtrlProduto.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.pnlEstoqueMin.ResumeLayout(False)
+        Me.pnlEstoqueMin.PerformLayout()
+        CType(Me.dgEstoqueBaixo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbAcessoRapido.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -312,10 +540,21 @@ Partial Class frmPrincipal
     Friend WithEvents Timer As Timer
     Friend WithEvents JanelasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents gbPrincipal As GroupBox
-    Friend WithEvents tabCtrlProduto As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents EstoqueToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents dgEstoqueBaixo As GFT.Util.SuperDataGridView
+    Friend WithEvents txtTotal As TextBox
+    Friend WithEvents lblTotal As Label
+    Friend WithEvents pnlEstoqueMin As Panel
+    Friend WithEvents btnEstoqueMin As Button
+    Friend WithEvents gbAcessoRapido As GroupBox
+    Friend WithEvents btnNovoProdutoPrincipal As Button
+    Friend WithEvents ToolTipPrincipal As ToolTip
+    Friend WithEvents btnSaidaPrincipal As Button
+    Friend WithEvents btnNovoClientePrincipal As Button
+    Friend WithEvents btnEntradaPrincipal As Button
+    Friend WithEvents btnConsultaVendaPrincipal As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents btnTotalVendaPrincipal As Button
+    Friend WithEvents lblTotalVendas As Label
 End Class

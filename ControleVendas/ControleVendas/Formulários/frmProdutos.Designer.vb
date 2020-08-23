@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmProdutos
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,31 +20,39 @@ Partial Class frmProdutos
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProdutos))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabCtrlProduto = New System.Windows.Forms.TabControl()
         Me.tabConsulta = New System.Windows.Forms.TabPage()
+        Me.chkTodos = New System.Windows.Forms.CheckBox()
+        Me.txtLetreiro = New GFT.Util.SuperLetreiro()
+        Me.dgProduto = New GFT.Util.SuperDataGridView()
         Me.gbFiltroProduto = New System.Windows.Forms.GroupBox()
-        Me.txtFiltroCor = New GFT.Util.SuperTextBox()
+        Me.btnLimpaFiltro = New System.Windows.Forms.Button()
+        Me.lblTamanho = New System.Windows.Forms.Label()
+        Me.cbTamanho = New GFT.Util.SuperComboBox()
+        Me.cbCor = New GFT.Util.SuperComboBox()
+        Me.lblCor = New System.Windows.Forms.Label()
         Me.txtFiltroProduto = New GFT.Util.SuperTextBox()
         Me.lblFiltroProduto = New System.Windows.Forms.Label()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnFiltrar = New System.Windows.Forms.Button()
+        Me.imgListProdutos = New System.Windows.Forms.ImageList(Me.components)
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnCadastrar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.dgProduto = New GFT.Util.SuperDataGridView()
+        Me.btnExportar = New System.Windows.Forms.Button()
         Me.tabCtrlProduto.SuspendLayout()
         Me.tabConsulta.SuspendLayout()
+        CType(Me.dgProduto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiltroProduto.SuspendLayout()
         Me.gbBotoes.SuspendLayout()
-        CType(Me.dgProduto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabCtrlProduto
@@ -52,65 +60,184 @@ Partial Class frmProdutos
         Me.tabCtrlProduto.Controls.Add(Me.tabConsulta)
         Me.tabCtrlProduto.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabCtrlProduto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.tabCtrlProduto.ImageList = Me.ImageList1
+        Me.tabCtrlProduto.ImageList = Me.imgListProdutos
         Me.tabCtrlProduto.Location = New System.Drawing.Point(0, 0)
         Me.tabCtrlProduto.Name = "tabCtrlProduto"
         Me.tabCtrlProduto.Padding = New System.Drawing.Point(50, 10)
         Me.tabCtrlProduto.SelectedIndex = 0
-        Me.tabCtrlProduto.Size = New System.Drawing.Size(1053, 652)
+        Me.tabCtrlProduto.Size = New System.Drawing.Size(1138, 667)
         Me.tabCtrlProduto.TabIndex = 0
         '
         'tabConsulta
         '
+        Me.tabConsulta.BackColor = System.Drawing.SystemColors.InactiveBorder
+        Me.tabConsulta.Controls.Add(Me.btnExportar)
+        Me.tabConsulta.Controls.Add(Me.chkTodos)
+        Me.tabConsulta.Controls.Add(Me.txtLetreiro)
         Me.tabConsulta.Controls.Add(Me.dgProduto)
         Me.tabConsulta.Controls.Add(Me.gbFiltroProduto)
         Me.tabConsulta.ImageIndex = 0
         Me.tabConsulta.Location = New System.Drawing.Point(4, 69)
         Me.tabConsulta.Name = "tabConsulta"
         Me.tabConsulta.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabConsulta.Size = New System.Drawing.Size(1045, 579)
+        Me.tabConsulta.Size = New System.Drawing.Size(1130, 594)
         Me.tabConsulta.TabIndex = 0
-        Me.tabConsulta.Text = "Consulta"
-        Me.tabConsulta.UseVisualStyleBackColor = True
+        Me.tabConsulta.Text = "Consulta de Produtos"
+        '
+        'chkTodos
+        '
+        Me.chkTodos.AutoSize = True
+        Me.chkTodos.Location = New System.Drawing.Point(49, 169)
+        Me.chkTodos.Name = "chkTodos"
+        Me.chkTodos.Size = New System.Drawing.Size(188, 29)
+        Me.chkTodos.TabIndex = 3
+        Me.chkTodos.Text = "Selecionar Todos"
+        Me.chkTodos.UseVisualStyleBackColor = True
+        '
+        'txtLetreiro
+        '
+        Me.txtLetreiro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiro.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiro.Location = New System.Drawing.Point(40, 554)
+        Me.txtLetreiro.Name = "txtLetreiro"
+        Me.txtLetreiro.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
+        Me.txtLetreiro.Size = New System.Drawing.Size(227, 24)
+        Me.txtLetreiro.TabIndex = 2
+        Me.txtLetreiro.TextoLetreiro = "0,00 Registros"
+        Me.txtLetreiro.VelocidadeRolagem = 1
+        '
+        'dgProduto
+        '
+        Me.dgProduto.AdicionarCheckBox = True
+        Me.dgProduto.AllowUserToAddRows = False
+        Me.dgProduto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgProduto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgProduto.BackgroundColor = System.Drawing.Color.White
+        Me.dgProduto.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgProduto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.dgProduto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgProduto.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        Me.dgProduto.ColumnHeadersHeight = 50
+        Me.dgProduto.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
+        Me.dgProduto.CorTextoCabeçalho = System.Drawing.Color.White
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgProduto.DefaultCellStyle = DataGridViewCellStyle14
+        Me.dgProduto.EnableHeadersVisualStyles = False
+        Me.dgProduto.Location = New System.Drawing.Point(40, 199)
+        Me.dgProduto.Name = "dgProduto"
+        Me.dgProduto.ReadOnly = True
+        Me.dgProduto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dgProduto.RowHeadersVisible = False
+        Me.dgProduto.RowHeadersWidth = 51
+        Me.dgProduto.RowTemplate.Height = 24
+        Me.dgProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgProduto.Size = New System.Drawing.Size(1034, 349)
+        Me.dgProduto.TabIndex = 1
         '
         'gbFiltroProduto
         '
         Me.gbFiltroProduto.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbFiltroProduto.Controls.Add(Me.txtFiltroCor)
+        Me.gbFiltroProduto.BackColor = System.Drawing.SystemColors.Control
+        Me.gbFiltroProduto.Controls.Add(Me.btnLimpaFiltro)
+        Me.gbFiltroProduto.Controls.Add(Me.lblTamanho)
+        Me.gbFiltroProduto.Controls.Add(Me.cbTamanho)
+        Me.gbFiltroProduto.Controls.Add(Me.cbCor)
+        Me.gbFiltroProduto.Controls.Add(Me.lblCor)
         Me.gbFiltroProduto.Controls.Add(Me.txtFiltroProduto)
         Me.gbFiltroProduto.Controls.Add(Me.lblFiltroProduto)
-        Me.gbFiltroProduto.Location = New System.Drawing.Point(43, 25)
+        Me.gbFiltroProduto.Controls.Add(Me.btnFiltrar)
+        Me.gbFiltroProduto.Location = New System.Drawing.Point(40, 16)
         Me.gbFiltroProduto.Name = "gbFiltroProduto"
-        Me.gbFiltroProduto.Size = New System.Drawing.Size(946, 117)
+        Me.gbFiltroProduto.Size = New System.Drawing.Size(1034, 147)
         Me.gbFiltroProduto.TabIndex = 0
         Me.gbFiltroProduto.TabStop = False
         Me.gbFiltroProduto.Text = "Filtrar"
         '
-        'txtFiltroCor
+        'btnLimpaFiltro
         '
-        Me.txtFiltroCor.Alterado = False
-        Me.txtFiltroCor.BackColor = System.Drawing.Color.White
-        Me.txtFiltroCor.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtFiltroCor.Location = New System.Drawing.Point(285, 70)
-        Me.txtFiltroCor.Name = "txtFiltroCor"
-        Me.txtFiltroCor.Size = New System.Drawing.Size(188, 30)
-        Me.txtFiltroCor.SuperMascara = ""
-        Me.txtFiltroCor.SuperObrigatorio = False
-        Me.txtFiltroCor.SuperTravaErrors = False
-        Me.txtFiltroCor.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtFiltroCor.SuperTxtObrigatorio = ""
-        Me.txtFiltroCor.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtFiltroCor.TabIndex = 2
+        Me.btnLimpaFiltro.Image = Global.ControleVendas.My.Resources.Resources.iconFIlterRemove
+        Me.btnLimpaFiltro.Location = New System.Drawing.Point(818, 72)
+        Me.btnLimpaFiltro.Name = "btnLimpaFiltro"
+        Me.btnLimpaFiltro.Size = New System.Drawing.Size(174, 38)
+        Me.btnLimpaFiltro.TabIndex = 7
+        Me.btnLimpaFiltro.Text = " &Limpar Filtro"
+        Me.btnLimpaFiltro.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnLimpaFiltro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnLimpaFiltro.UseVisualStyleBackColor = True
+        '
+        'lblTamanho
+        '
+        Me.lblTamanho.AutoSize = True
+        Me.lblTamanho.Location = New System.Drawing.Point(284, 52)
+        Me.lblTamanho.Name = "lblTamanho"
+        Me.lblTamanho.Size = New System.Drawing.Size(96, 25)
+        Me.lblTamanho.TabIndex = 6
+        Me.lblTamanho.Text = "Tamanho"
+        '
+        'cbTamanho
+        '
+        Me.cbTamanho.Alterado = False
+        Me.cbTamanho.CorFundo = System.Drawing.Color.White
+        Me.cbTamanho.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbTamanho.CorTexto = System.Drawing.Color.Black
+        Me.cbTamanho.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbTamanho.FormattingEnabled = True
+        Me.cbTamanho.Location = New System.Drawing.Point(289, 77)
+        Me.cbTamanho.Name = "cbTamanho"
+        Me.cbTamanho.Size = New System.Drawing.Size(133, 33)
+        Me.cbTamanho.SuperObrigatorio = False
+        Me.cbTamanho.SuperTxtObrigatorio = ""
+        Me.cbTamanho.TabIndex = 5
+        '
+        'cbCor
+        '
+        Me.cbCor.Alterado = False
+        Me.cbCor.CorFundo = System.Drawing.Color.White
+        Me.cbCor.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbCor.CorTexto = System.Drawing.Color.Black
+        Me.cbCor.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbCor.FormattingEnabled = True
+        Me.cbCor.Location = New System.Drawing.Point(434, 77)
+        Me.cbCor.Name = "cbCor"
+        Me.cbCor.Size = New System.Drawing.Size(198, 33)
+        Me.cbCor.SuperObrigatorio = False
+        Me.cbCor.SuperTxtObrigatorio = ""
+        Me.cbCor.TabIndex = 4
+        '
+        'lblCor
+        '
+        Me.lblCor.AutoSize = True
+        Me.lblCor.Location = New System.Drawing.Point(429, 52)
+        Me.lblCor.Name = "lblCor"
+        Me.lblCor.Size = New System.Drawing.Size(44, 25)
+        Me.lblCor.TabIndex = 3
+        Me.lblCor.Text = "Cor"
         '
         'txtFiltroProduto
         '
         Me.txtFiltroProduto.Alterado = False
         Me.txtFiltroProduto.BackColor = System.Drawing.Color.White
-        Me.txtFiltroProduto.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtFiltroProduto.Location = New System.Drawing.Point(75, 70)
+        Me.txtFiltroProduto.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtFiltroProduto.Location = New System.Drawing.Point(14, 80)
         Me.txtFiltroProduto.Name = "txtFiltroProduto"
-        Me.txtFiltroProduto.Size = New System.Drawing.Size(188, 30)
+        Me.txtFiltroProduto.Size = New System.Drawing.Size(269, 30)
         Me.txtFiltroProduto.SuperMascara = ""
         Me.txtFiltroProduto.SuperObrigatorio = False
         Me.txtFiltroProduto.SuperTravaErrors = False
@@ -122,17 +249,29 @@ Partial Class frmProdutos
         'lblFiltroProduto
         '
         Me.lblFiltroProduto.AutoSize = True
-        Me.lblFiltroProduto.Location = New System.Drawing.Point(70, 41)
+        Me.lblFiltroProduto.Location = New System.Drawing.Point(9, 52)
         Me.lblFiltroProduto.Name = "lblFiltroProduto"
-        Me.lblFiltroProduto.Size = New System.Drawing.Size(86, 25)
+        Me.lblFiltroProduto.Size = New System.Drawing.Size(80, 25)
         Me.lblFiltroProduto.TabIndex = 0
-        Me.lblFiltroProduto.Text = "Produto:"
+        Me.lblFiltroProduto.Text = "Produto"
         '
-        'ImageList1
+        'btnFiltrar
         '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "iconSapato.png")
+        Me.btnFiltrar.Image = Global.ControleVendas.My.Resources.Resources.iconFilter
+        Me.btnFiltrar.Location = New System.Drawing.Point(638, 72)
+        Me.btnFiltrar.Name = "btnFiltrar"
+        Me.btnFiltrar.Size = New System.Drawing.Size(174, 38)
+        Me.btnFiltrar.TabIndex = 8
+        Me.btnFiltrar.Text = "Filtrar"
+        Me.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFiltrar.UseVisualStyleBackColor = True
+        '
+        'imgListProdutos
+        '
+        Me.imgListProdutos.ImageStream = CType(resources.GetObject("imgListProdutos.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.imgListProdutos.TransparentColor = System.Drawing.Color.Transparent
+        Me.imgListProdutos.Images.SetKeyName(0, "iconSapato.png")
         '
         'gbBotoes
         '
@@ -143,9 +282,9 @@ Partial Class frmProdutos
         Me.gbBotoes.Controls.Add(Me.btnEditar)
         Me.gbBotoes.Controls.Add(Me.btnPesquisar)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 652)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 667)
         Me.gbBotoes.Name = "gbBotoes"
-        Me.gbBotoes.Size = New System.Drawing.Size(1053, 67)
+        Me.gbBotoes.Size = New System.Drawing.Size(1138, 67)
         Me.gbBotoes.TabIndex = 1
         Me.gbBotoes.TabStop = False
         '
@@ -156,7 +295,7 @@ Partial Class frmProdutos
         Me.btnCadastrar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnCadastrar.Image = Global.ControleVendas.My.Resources.Resources.iconAddBlue
         Me.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnCadastrar.Location = New System.Drawing.Point(221, 15)
+        Me.btnCadastrar.Location = New System.Drawing.Point(264, 15)
         Me.btnCadastrar.Name = "btnCadastrar"
         Me.btnCadastrar.Size = New System.Drawing.Size(203, 42)
         Me.btnCadastrar.TabIndex = 4
@@ -172,7 +311,7 @@ Partial Class frmProdutos
         Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnExcluir.Image = Global.ControleVendas.My.Resources.Resources.iconExcluir
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnExcluir.Location = New System.Drawing.Point(639, 15)
+        Me.btnExcluir.Location = New System.Drawing.Point(682, 15)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(203, 42)
         Me.btnExcluir.TabIndex = 3
@@ -188,7 +327,7 @@ Partial Class frmProdutos
         Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnFechar.Image = Global.ControleVendas.My.Resources.Resources.iconClose
         Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnFechar.Location = New System.Drawing.Point(850, 15)
+        Me.btnFechar.Location = New System.Drawing.Point(893, 15)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(203, 42)
         Me.btnFechar.TabIndex = 2
@@ -204,7 +343,7 @@ Partial Class frmProdutos
         Me.btnEditar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnEditar.Image = Global.ControleVendas.My.Resources.Resources.iconEditar
         Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnEditar.Location = New System.Drawing.Point(430, 15)
+        Me.btnEditar.Location = New System.Drawing.Point(473, 15)
         Me.btnEditar.Name = "btnEditar"
         Me.btnEditar.Size = New System.Drawing.Size(203, 42)
         Me.btnEditar.TabIndex = 1
@@ -220,7 +359,7 @@ Partial Class frmProdutos
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnPesquisar.Image = Global.ControleVendas.My.Resources.Resources.iconePesquisar
         Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnPesquisar.Location = New System.Drawing.Point(12, 15)
+        Me.btnPesquisar.Location = New System.Drawing.Point(55, 15)
         Me.btnPesquisar.Name = "btnPesquisar"
         Me.btnPesquisar.Size = New System.Drawing.Size(203, 42)
         Me.btnPesquisar.TabIndex = 0
@@ -229,64 +368,39 @@ Partial Class frmProdutos
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = True
         '
-        'dgProduto
+        'btnExportar
         '
-        Me.dgProduto.AdicionarCheckBox = True
-        Me.dgProduto.AllowUserToAddRows = False
-        Me.dgProduto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgProduto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
-        Me.dgProduto.BackgroundColor = System.Drawing.Color.White
-        Me.dgProduto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgProduto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
-        Me.dgProduto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgProduto.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgProduto.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
-        Me.dgProduto.CorTextoCabeçalho = System.Drawing.Color.White
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgProduto.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgProduto.EnableHeadersVisualStyles = False
-        Me.dgProduto.Location = New System.Drawing.Point(40, 187)
-        Me.dgProduto.Name = "dgProduto"
-        Me.dgProduto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        Me.dgProduto.RowHeadersVisible = False
-        Me.dgProduto.RowHeadersWidth = 51
-        Me.dgProduto.RowTemplate.Height = 24
-        Me.dgProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgProduto.Size = New System.Drawing.Size(949, 317)
-        Me.dgProduto.TabIndex = 1
+        Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExportar.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.btnExportar.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.btnExportar.FlatAppearance.BorderSize = 2
+        Me.btnExportar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray
+        Me.btnExportar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control
+        Me.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportar.Image = Global.ControleVendas.My.Resources.Resources.iconExcel
+        Me.btnExportar.Location = New System.Drawing.Point(1011, 552)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Size = New System.Drawing.Size(63, 40)
+        Me.btnExportar.TabIndex = 4
+        Me.btnExportar.UseVisualStyleBackColor = False
         '
         'frmProdutos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1053, 719)
+        Me.ClientSize = New System.Drawing.Size(1138, 734)
         Me.Controls.Add(Me.tabCtrlProduto)
         Me.Controls.Add(Me.gbBotoes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmProdutos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmProdutos"
         Me.tabCtrlProduto.ResumeLayout(False)
         Me.tabConsulta.ResumeLayout(False)
+        Me.tabConsulta.PerformLayout()
+        CType(Me.dgProduto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbFiltroProduto.ResumeLayout(False)
         Me.gbFiltroProduto.PerformLayout()
         Me.gbBotoes.ResumeLayout(False)
-        CType(Me.dgProduto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -302,7 +416,15 @@ Partial Class frmProdutos
     Friend WithEvents btnPesquisar As Button
     Friend WithEvents lblFiltroProduto As Label
     Friend WithEvents txtFiltroProduto As GFT.Util.SuperTextBox
-    Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents txtFiltroCor As GFT.Util.SuperTextBox
+    Friend WithEvents imgListProdutos As ImageList
     Friend WithEvents dgProduto As GFT.Util.SuperDataGridView
+    Friend WithEvents txtLetreiro As GFT.Util.SuperLetreiro
+    Friend WithEvents btnLimpaFiltro As Button
+    Friend WithEvents lblTamanho As Label
+    Friend WithEvents cbTamanho As GFT.Util.SuperComboBox
+    Friend WithEvents cbCor As GFT.Util.SuperComboBox
+    Friend WithEvents lblCor As Label
+    Friend WithEvents btnFiltrar As Button
+    Friend WithEvents chkTodos As CheckBox
+    Friend WithEvents btnExportar As Button
 End Class

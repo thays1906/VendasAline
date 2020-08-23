@@ -35,6 +35,8 @@ Public Class SuperDataGridView
     Private fontText As Font = New Font("Verdana", 12)
     Private colorText As Color = Color.White
 
+    Public bUserEdit As Boolean = False
+
 #Region "Propriedades"
 
     Public Property CorDoFundoCabeçalho As Color
@@ -68,6 +70,7 @@ Public Class SuperDataGridView
             Me.Invalidate()
         End Set
     End Property
+
 #End Region
 
     Sub New()
@@ -108,10 +111,7 @@ Public Class SuperDataGridView
         Me.RowHeadersVisible = False
 
 
-        'If Me.bChkBox Then
-        '    AdicionaCheckBoxColumn()
-        'End If
-
+        bUserEdit = False
     End Sub
 
     Private Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
@@ -138,19 +138,38 @@ Public Class SuperDataGridView
                     Next
                 End If
 
-                If Not Me.Columns.Contains(checkbox) Then
+                If Process.GetProcesses() IsNot Nothing Then
 
-                    checkbox = New DataGridViewCheckBoxColumn()
-                    checkbox.Name = "chkDataGrid"
-                    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                    checkbox.HeaderText = "Selecionar"
-                    checkbox.Width = 50
-                    checkbox.DisplayIndex = 0
-                    checkbox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                    Me.Columns.Add(checkbox)
+                    If Me.DataSource IsNot Nothing Then
 
+                        If Not Me.Columns.Contains(checkbox) Then
+
+                            checkbox = New DataGridViewCheckBoxColumn()
+                            checkbox.Name = "chkDataGrid"
+                            checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                            checkbox.HeaderText = "Selecionar"
+                            checkbox.Width = 50
+                            checkbox.DisplayIndex = 0
+                            checkbox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                            Me.Columns.Add(checkbox)
+
+                        End If
+                    End If
+
+                Else
+                    If Not Me.Columns.Contains(checkbox) Then
+
+                        checkbox = New DataGridViewCheckBoxColumn()
+                        checkbox.Name = "chkDataGrid"
+                        checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                        checkbox.HeaderText = "Selecionar"
+                        checkbox.Width = 50
+                        checkbox.DisplayIndex = 0
+                        checkbox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        Me.Columns.Add(checkbox)
+
+                    End If
                 End If
-
                 'Me.Rows.Add()
 
                 'Else
@@ -165,7 +184,9 @@ Public Class SuperDataGridView
 
             ElseIf bChkBox = False Then
                 'Remove column checkbox quando altera a propriedade no Design
-                Me.Columns.Remove(checkbox)
+                If checkbox IsNot Nothing Then
+                    Me.Columns.Remove(checkbox)
+                End If
             End If
 
 
@@ -191,122 +212,130 @@ Public Class SuperDataGridView
         Try
 
             Me.DoubleBuffered = True
-            Dim a = Me.Rows.Count
-            If a <> 0 Then
-                Dim linha = Me.Rows(0)
-                Me.Rows.Remove(linha)
-            End If
+            'Dim a = Me.Rows.Count
+            'If a <> 0 Then
+            '    Dim linha = Me.Rows(0)
+            '    Me.Rows.Remove(linha)
+            'End If
 
+            If oDataSet IsNot Nothing Then
 
-            For i = 0 To oDataSet.TotalColunas - 1
+                For i = 0 To oDataSet.Tables(nTable).Columns.Count - 1
 
-                column = oDataSet.NomeColuna(i, nTable)
+                    column = oDataSet.NomeColuna(i, nTable)
 
-                If column.Substring(0, 3) = "as_" Or
-                       column.Substring(0, 3) = "me_" Or
-                       column.Substring(0, 3) = "nu_" Then
+                    If column.Substring(0, 3) = "as_" Or
+                           column.Substring(0, 3) = "me_" Or
+                           column.Substring(0, 3) = "nu_" Then
 
-                    column = column.Substring(3)
-                    If column.Contains("#") Then
-                        width = CInt(column.Substring(column.IndexOf("#") + 1))
-                        column = column.Substring(0, column.IndexOf("#"))
-                    End If
-                    If column.Contains("_") Then
-                        column = column.Replace("_", " ")
-                    End If
+                        column = column.Substring(3)
+                        If column.Contains("#") Then
+                            width = CInt(column.Substring(column.IndexOf("#") + 1))
+                            column = column.Substring(0, column.IndexOf("#"))
+                        End If
+                        If column.Contains("_") Then
+                            column = column.Replace("_", " ")
+                        End If
 
-                ElseIf column.Substring(0, 3) = "id_" Then
-                    ID = column
-                End If
-
-                oDataSet.Tables(0).Columns(i).ColumnName = column
-                Me.DataSource = oDataSet.Tables(0)
-
-                If width <> Nothing Then
-                    Me.Columns(column).Width = width
-
-                    Me.Columns(column).FillWeight = width
-                End If
-
-                If bChkBox Then
-
-                    'Se escolheu adicionar coluna com checkbox, ignora o text do cabeçalho primeira coluna.
-                    If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
-                        AdicionaCheckBoxColumn(True)
+                    ElseIf column.Substring(0, 3) = "id_" Then
+                        ID = column
                     End If
 
-                    'If column <> Nothing Then
-                    '    If Not column.Contains("id_") Then
-                    '        Me.Columns(i + 1).HeaderText = column
-                    '    End If
-                    'End If
+                    oDataSet.Tables(nTable).Columns(i).ColumnName = column
+
+                    Me.DataSource = oDataSet.Tables(nTable)
+
+                    If width <> Nothing Then
+                        Me.Columns(column).Width = width
+
+                        'Me.Columns(column).FillWeight = width
+                    End If
+
+                    If bChkBox Then
+
+                        'Se escolheu adicionar coluna com checkbox, ignora o text do cabeçalho primeira coluna.
+                        If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
+                            AdicionaCheckBoxColumn(True)
+                        Else
+                            AdicionaCheckBoxColumn()
+                        End If
+
+                        'If column <> Nothing Then
+                        '    If Not column.Contains("id_") Then
+                        '        Me.Columns(i + 1).HeaderText = column
+                        '    End If
+                        'End If
+
+                        'Else
+                        '    If column <> Nothing Then
+                        '        Me.Columns(i).HeaderText = column
+                        '    End If
+                    End If
+
+
+                    bCarregado = False
+
+                Next
+
+
+
+                'Chamando o evento DataBindingComplete (DataGrid está carregado)
+                bCarregado = True
+                SuperDataGridView_DataBindingComplete(New EventArgs(), New DataGridViewBindingCompleteEventArgs(ListChangedType.ItemChanged))
+
+                If ID Is Nothing Then
+                    'Se não encontrou coluna 'id_' no dataSet.
+                    'Verifica se foi informado no parâmetro.
+
+                    If posicaoId <> Nothing Then
+
+                        ID = posicaoId.ToString
+
+                        Me.Columns(ID).Visible = False
+                    End If
 
                 Else
-                    If column <> Nothing Then
-                        Me.Columns(i).HeaderText = column
-                    End If
-                End If
-
-                bCarregado = False
-
-            Next
-
-            'Chamando o evento DataBindingComplete (DataGrid está carregado)
-            bCarregado = True
-            SuperDataGridView_DataBindingComplete(New EventArgs(), New DataGridViewBindingCompleteEventArgs(ListChangedType.ItemChanged))
-
-            If ID Is Nothing Then
-                'Se não encontrou coluna 'id_' no dataSet.
-                'Verifica se foi informado no parâmetro.
-
-                If posicaoId <> Nothing Then
-
-                    ID = posicaoId.ToString
-
                     Me.Columns(ID).Visible = False
                 End If
 
+
+                If bChkBox Then
+                    If txtHeaderCheck Is Nothing Then
+                        'Removendo texto da coluna checkbox
+                        Me.Columns("chkDataGrid").HeaderText = ""
+                    Else
+                        Me.Columns("chkDataGrid").HeaderText = txtHeaderCheck
+
+                    End If
+                End If
+
+                If bImage Then
+
+                    If removeTxtColumnImg Then
+
+                        'Remove text da coluna de imagens
+
+                        For Each col As DataGridViewImageColumn In Me.Columns.OfType(Of DataGridViewImageColumn)
+
+                            col.HeaderText = ""
+                        Next
+
+                    End If
+
+                End If
+
+                If Not letreiro Is Nothing Then
+                    letreiro.TextoLetreiro = oDataSet.InfoPesquisa
+                End If
             Else
-                Me.Columns(ID).Visible = False
-            End If
 
-
-            If bChkBox Then
-                If txtHeaderCheck Is Nothing Then
-                    'Removendo texto da coluna checkbox
-                    Me.Columns("chkDataGrid").HeaderText = ""
-                Else
-                    Me.Columns("chkDataGrid").HeaderText = txtHeaderCheck
-
+                If oDataSet Is Nothing Then
+                    Me.DataSource = oDataSet.Tables(nTable)
+                    LogaErro("SuperLV::PreencheDataGrid [" & Me.Name & "] - ATENÇÃO: RecordSet=Nothing, por favor, verifique.")
+                    Exit Sub
                 End If
             End If
 
-            If bImage Then
-
-                If removeTxtColumnImg Then
-
-                    'Remove text da coluna de imagens
-
-                    For Each col As DataGridViewImageColumn In Me.Columns.OfType(Of DataGridViewImageColumn)
-
-                        col.HeaderText = ""
-                    Next
-
-                End If
-
-            End If
-
-            If Not letreiro Is Nothing Then
-                letreiro.TextoLetreiro = oDataSet.InfoPesquisa
-            End If
-
-            If oDataSet.TotalRegistros = 0 Then
-                LogaErro("SuperLV::PreencheDataGrid [" & Me.Name & "] - ATENÇÃO: RecordSet=Nothing, por favor, verifique.")
-                Exit Sub
-            End If
-
-
-            'Me.Refresh()
 
         Catch ex As Exception
             LogaErro("Erro em Util::PreencheDataGrid: " & ex.ToString())
@@ -449,7 +478,7 @@ Public Class SuperDataGridView
                                 Me.Rows(i).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
 
                                 If bChkBox Then
-                                    Me.Rows(i).Cells(0).Value = False
+                                    Me.Rows(i).Cells("chkDataGrid").Value = False
                                 End If
 
                             Next
@@ -461,7 +490,7 @@ Public Class SuperDataGridView
                                 Me.Rows(i).Selected = True
 
                                 If bChkBox Then
-                                    Me.Rows(i).Cells(0).Value = True
+                                    Me.Rows(i).Cells("chkDataGrid").Value = True
                                 End If
                             Next
                         End If
@@ -473,7 +502,7 @@ Public Class SuperDataGridView
                             Me.Rows(i).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
 
                             If bChkBox Then
-                                Me.Rows(i).Cells(0).Value = False
+                                Me.Rows(i).Cells("chkDataGrid").Value = False
                             End If
                         Next
 
@@ -629,7 +658,13 @@ Public Class SuperDataGridView
         Try
             'Quando o DataGrid estiver carregado, desmarca a linha que estiver selecionada.
             If bCarregado Then
-                For i = 0 To Me.Rows.Count - 1
+
+                If bUserEdit Then
+                    Exit Sub
+                End If
+
+                For i =
+                    0 To Me.Rows.Count - 1
 
                     If Me.Rows(i).Selected Then
 
@@ -641,17 +676,20 @@ Public Class SuperDataGridView
 
                         Me.ClearSelection()
 
-                        'Ativa ReadOnly para todas as células, exceto a coluna do checkbox.
-                        'For l = 0 To Me.Columns.Count - 1
-                        '    If bChkBox Then
-                        '        If Not Me.Columns(l).Name = "chkDataGrid" Then
+                        ''Ativa ReadOnly para todas as células, exceto a coluna do checkbox.
+                        If Me.ReadOnly Then
+                            For l = 0 To Me.Columns.Count - 1
+                                If bChkBox Then
 
-                        '            Me.Columns(l)..ReadOnly = True
-                        '        End If
-                        '    Else
-                        '        Me.Columns(l).ReadOnly = True
-                        '    End If
-                        'Next
+                                    If Not Me.Columns(l).Name = "chkDataGrid" Then
+
+                                        Me.Columns(l).ReadOnly = True
+                                    End If
+                                Else
+                                    Me.Columns(l).ReadOnly = True
+                                End If
+                            Next
+                        End If
                     End If
                 Next
 

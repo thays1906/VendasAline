@@ -6,11 +6,17 @@ Public Module SubUtil
     '=======================================
     'Enums
     '=======================================
+    Public Enum eTipoMovimentacao
+        Entrada = 1
+        Saida = 2
+    End Enum
     Public Enum eTela
 
         Clientes
         Produtos
-        Configuracao = 103
+        Estoque
+        Configuracao
+        Vendas
 
         Usuario = 202
         Email = 203
@@ -18,10 +24,10 @@ Public Module SubUtil
         about = 210
 
     End Enum
-    Public Enum eCadastroCategoria
-        FormaPagamento = 1
-        CategoriaDespesa = 2
-        CategoriaReceita = 3
+    Public Enum eFormaPagamento
+        Dinheiro = 1
+        Debito = 2
+        Credito = 3
     End Enum
 
     Public Enum eSimNao
@@ -48,6 +54,7 @@ Public Module SubUtil
         CinzaClaro
         CinzaBranco
         CinzaEscuro
+        Rosa
         Nenhuma
     End Enum
     Public Enum eStatusDespesa
@@ -55,16 +62,7 @@ Public Module SubUtil
         Pendente = 2
         Atrasado = 3
     End Enum
-    Public Enum eDespesaFixa
-        Diario = 1
-        Semanal = 7
-        Quinzenal = 15
-        Mensal = 30
-        Bimestral = 60
-        Trimestral = 90
-        Semestral = 182
-        Anual = 365
-    End Enum
+
     Public Enum eStatus
         Ativo = 1
         Inativo = 2
@@ -74,11 +72,7 @@ Public Module SubUtil
         Poupanca = 2
         Digital = 3
     End Enum
-    Public Enum eAcao
-        Novo = 1
-        Editar = 2
-        Excluir = 3
-    End Enum
+
     Public Enum eTipoMensagem
         OK = 1
         Question = 2
@@ -178,6 +172,9 @@ Public Module SubUtil
 
         ElseIf cor = Collor.Gelo Then
             Controle.BackColor = Color.WhiteSmoke
+
+        ElseIf Cor = Collor.Rosa Then
+            Controle.BackColor = Color.FromArgb(224, 36, 120)
         End If
     End Sub
     Public Sub CorButton(ByRef button As Button,
@@ -227,6 +224,9 @@ Public Module SubUtil
 
         ElseIf Cor = Collor.Nenhuma Then
             button.BackColor = Color.Transparent
+
+        ElseIf Cor = Collor.Rosa Then
+            button.BackColor = Color.FromArgb(224, 36, 120)
         End If
     End Sub
     Public Sub CorList(ByRef lv As SuperLV)
@@ -658,12 +658,12 @@ Public Module SubUtil
 
             collNomeTela.Add(New String() {" ", "Clientes"}, Int(eTela.Clientes).ToString)
             collNomeTela.Add(New String() {" ", "Produtos"}, Int(eTela.Produtos).ToString)
-
+            collNomeTela.Add(New String() {" ", "Consulta de Estoque"}, Int(eTela.Estoque).ToString)
             collNomeTela.Add(New String() {" ", "Configurações"}, Int(eTela.Configuracao).ToString)
             collNomeTela.Add(New String() {" ", "Usuário"}, Int(eTela.Usuario).ToString)
             collNomeTela.Add(New String() {" ", "Envio de Email"}, Int(eTela.Email).ToString)
             collNomeTela.Add(New String() {" ", "Sobre"}, Int(eTela.about).ToString)
-
+            collNomeTela.Add(New String() {" ", "Vendas"}, Int(eTela.Vendas).ToString)
         Catch ex As Exception
             LogaErro("Erro em " & NomeMetodo("Util") & ": " & ex.Message)
         End Try

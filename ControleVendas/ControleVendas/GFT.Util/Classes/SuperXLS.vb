@@ -59,11 +59,11 @@ Public Class SuperXLS
     End Structure
 
     Private strArquivoXLS As String = ""
-    Private strAba As String = "Finance$Management"
-    Private strTitulo As String = "RPAD - Relatório"
+    Private strAba As String = "Picarruchas"
+    Private strTitulo As String = "Picarruchas - Relatório"
     Private strAutor As String = "DOC"
-    Private strComentario As String = "Garantia de Veículo - Boleto de Sinistro"
-    Private strCompania As String = "Bradesco S/A"
+    Private strComentario As String = "Picarruchas"
+    Private strCompania As String = "Picarruchas LTDA"
 
     Const LINHA_CABECALHO_BRADESCO As Integer = 1
     Const LINHA_CABECALHO_RELATORIO As Integer = 3
@@ -159,7 +159,7 @@ Public Class SuperXLS
 
             Me.Arquivo = Me.Arquivo & "." & Format(Now, "yyyy.MM.dd-hh.mm.ss") & ".xlsx"
 
-            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "FinancesManagement")
+            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "Picarruchas")
             ChecaCriaDiretorio(sCaminhoRelat)
             Me.Arquivo = Path.Combine(sCaminhoRelat, Me.Arquivo)
 
@@ -285,7 +285,7 @@ Public Class SuperXLS
             Next
 
             'Coloca o cabeçalho do Bradesco
-            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "Finance $ Management"
+            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "Picarruchas"
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.VerticalAlignment = ExcelVerticalAlignment.Center
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Color.SetColor(Color.White)
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Bold = True
@@ -358,7 +358,7 @@ Public Class SuperXLS
 
             Me.Arquivo = Me.Arquivo & "." & Format(Now, "yyyy.MM.dd-hh.mm.ss") & ".xlsx"
 
-            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "_RPAD_PRINT")
+            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "_Picarruchas_PRINT")
             ChecaCriaDiretorio(sCaminhoRelat)
             Me.Arquivo = Path.Combine(sCaminhoRelat, Me.Arquivo)
 
@@ -474,7 +474,7 @@ Public Class SuperXLS
             Next
 
             'Coloca o cabeçalho do Bradesco
-            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "BRADESCO"
+            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "Picarruchas"
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Color.SetColor(Color.White)
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Bold = True
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Size = 22
